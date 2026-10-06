@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ملاحظاتي | مساحة العمل</title>
+  <style>
+    :root{font-family:Tahoma,Arial,sans-serif;color:#26342f;background:#f6f5f0}*{box-sizing:border-box}
+    body{margin:0;line-height:1.7}button,a{font:inherit}button{cursor:pointer}
+    .shell{max-width:1220px;margin:auto;display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}
+    aside{background:#eceee7;border-left:1px solid #dfe3d8;padding:27px 18px;display:flex;flex-direction:column;gap:30px}
+    .logo{font-size:1.45rem;font-weight:800;letter-spacing:-.04em;color:#1c4d3c}.logo:before{content:'✳';color:#cc7c4d;margin-left:8px}
+    .nav{display:grid;gap:7px}.nav a{text-decoration:none;color:#43554b;padding:10px 13px;border-radius:9px}.nav .active{background:#d8e4d7;color:#174635;font-weight:700}
+    .profile{margin-top:auto;border-top:1px solid #d7dbd1;padding-top:17px;font-size:.86rem;color:#647267}
+    main{padding:28px clamp(20px,5vw,65px) 60px;min-width:0}
+    .top{display:flex;justify-content:space-between;gap:16px;align-items:center;color:#758077;font-size:.88rem}
+    .top a{color:#2e604d;text-decoration:none;border-bottom:1px solid currentColor}
+    h1{font-size:clamp(2rem,4vw,3rem);line-height:1.25;letter-spacing:-.05em;margin:40px 0 6px}.intro{margin:0;color:#78847a}
+    .toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:43px 0 19px}.toolbar h2{margin:0;font-size:1.25rem}
+    .new{background:#215b45;color:white;border:0;padding:9px 15px;border-radius:9px}.new:focus-visible,.summarize:focus-visible,a:focus-visible{outline:3px solid #c57c52;outline-offset:3px}
+    .notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.note{background:#fff;border:1px solid #e2e6dd;border-radius:13px;padding:22px;min-height:220px;box-shadow:0 4px 16px #293e2607}
+    .note:nth-child(2){background:#f5eee1}.note:nth-child(3){background:#e8eee8}
+    .meta{display:flex;justify-content:space-between;color:#89958a;font-size:.76rem}.note h3{font-size:1.13rem;line-height:1.4;margin:30px 0 8px}.note p{font-size:.88rem;color:#647167;margin:0}
+    .summary{display:grid;grid-template-columns:1fr auto;gap:12px 22px;align-items:center;background:#224b3d;color:white;border-radius:15px;padding:25px 28px;margin-top:26px}
+    .summary h2{margin:0;font-size:1.25rem}.summary p{grid-column:1;margin:0;color:#d5e6dc;font-size:.89rem}.summarize{grid-column:2;grid-row:1/3;background:#f3c996;color:#273930;border:0;border-radius:9px;padding:11px 17px;font-weight:700}
+    .result{grid-column:1/-1;margin-top:8px;border-top:1px solid #587668;padding-top:14px;min-height:20px;color:#fff}
+    .fine{font-size:.77rem;color:#859086;margin-top:19px}
+    @media(max-width:900px){.notes{grid-template-columns:1fr 1fr}.shell{grid-template-columns:180px 1fr}}
+    @media(max-width:650px){.shell{display:block}aside{padding:14px 20px;display:block}.nav,.profile{display:none}main{padding:20px}.notes{grid-template-columns:1fr}.note{min-height:160px}.summary{grid-template-columns:1fr}.summarize{grid-column:1;grid-row:auto}.summary p{grid-column:1}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <div class="logo">ملاحظاتي</div>
+      <nav class="nav" aria-label="القائمة الرئيسية"><a class="active" href="#notes">كل الملاحظات</a><a href="#summary">ملخص الأسبوع</a><a href="#">الأرشيف</a></nav>
+      <div class="profile">عبد الله العويس<br>مساحة العمل الشخصية</div>
+    </aside>
+    <main>
+      <div class="top"><span>مساحة العمل / ملاحظاتي</span><a href="{{ url_for('index' if repaired else 'repaired') }}">{{ 'عرض النسخة الأصلية' if repaired else 'عرض النسخة بعد الإصلاح' }}</a></div>
+      <h1>صباح الخير يا عبدالله </h1>
+      <p class="intro">أفكارك ومهامك لهذا الأسبوع في مكان واحد.</p>
+      <div class="toolbar" id="notes"><h2>آخر الملاحظات</h2><button class="new" type="button" disabled title="واجهة عرض فقط">+ ملاحظة جديدة</button></div>
+      <div class="notes">
+        <article class="note"><div class="meta"><span>العمل</span><time>اليوم، ٩:٣٠ ص</time></div><h3>واجهة التسجيل</h3><p>إنهاء حقول النموذج، رسائل الخطأ، وتجربة الجوال قبل مراجعة الخميس.</p></article>
+        <article class="note"><div class="meta"><span>المنتج</span><time>أمس، ٤:١٥ م</time></div><h3>اجتماع الفريق</h3><p>نراجع النسخة الأولى يوم الخميس ونحدد الملاحظات قبل الإطلاق التجريبي.</p></article>
+        <article class="note"><div class="meta"><span>الأمان</span><time>الأحد، ١١:٠٠ ص</time></div><h3>استعادة كلمة المرور</h3><p>تجربة الرابط المؤقت، انتهاء صلاحيته، ورسالة تأكيد واضحة للمستخدم.</p></article>
+      </div>
+      <section class="summary" id="summary">
+        <h2>ملخص الأسبوع بالذكاء الاصطناعي</h2>
+        <p>اجمع أهم نقاط ملاحظاتك في فقرة واحدة تساعدك تبدأ يومك.</p>
+        <button id="summarize" class="summarize" type="button">لخّص ملاحظاتي</button>
+        <div id="result" class="result" role="status" aria-live="polite">اضغط الزر لإنشاء الملخص.</div>
+      </section>
+      <p class="fine">نسخة تدريبية ببيانات وهمية، بدون اتصال بخدمة AI خارجية.</p>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='notes-safe.js' if repaired else 'notes.js') }}"></script>
+</body>
+</html>

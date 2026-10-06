@@ -1,6 +1,6 @@
 // A developer mistakenly placed the service key in browser code.
 // This is an inert classroom value, never a credential for a real provider.
-const AI_SERVICE_KEY = "demo_classroom_key_v1_not_real";
+const AI_SERVICE_KEY = env('AI_SERVICE_KEY');
 
 document.getElementById('summarize').addEventListener('click', async () => {
   const result = document.getElementById('result');
